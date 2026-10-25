@@ -1,6 +1,6 @@
 # Protein Metal Affinity GNN (PMAG)
 
-This project aims to calculate the protein affinity of molecules in IC50 using a Graph Convolutional Network. It uses pytorch and rdkit.
+This project aims to calculate the protein affinity of molecules using a Graph Convolutional Network. It uses pytorch and rdkit.
 
 
 ## Sources
