@@ -4,6 +4,7 @@ from torch_geometric.data import Data
 import os
 import multiprocessing as mp
 from rdkit import Chem
+from joblib import load
 
 chunk_size = 200
 
@@ -19,7 +20,7 @@ def get_chunks(file_path, chunk_size):
             yield chunk
             chunk = []
 
-encodings = {'O': 1, 'C': 2, 'N': 3, 'Fe': 4, 'Co': 5, 'In': 6, 'Ag': 7, 'S': 8, 'Y': 9, 'Cu': 10, 'Ni': 11, 'La': 12, 'P': 13, 'Tb': 14, 'Br': 15, 'Mg': 16, 'Be': 17, 'Al': 18, 'Tm': 19, 'F': 20, 'Dy': 21, 'Cl': 22, 'Zn': 23, 'Pr': 24, 'Sm': 25, 'Er': 26, 'Sr': 27, 'Cd': 28, 'Th': 29, 'Am': 30, 'Mn': 31, 'Li': 32, 'Ce': 33, 'Lu': 34, 'Cs': 35, 'Ho': 36, 'Ca': 37, 'Gd': 38, 'Pb': 39, 'I': 40, 'Eu': 41, 'Tl': 42, 'Se': 43, 'Sn': 44, 'Cr': 45, 'Ba': 46, 'Yb': 47, 'Pu': 48, 'Pm': 49, 'Hg': 50, 'Nd': 51, 'Ge': 52, 'Sc': 53, 'Na': 54, 'Pd': 55, 'K': 56, 'Ga': 57, 'Cm': 58, 'V': 59, 'Bi': 60, 'Ti': 61, 'Np': 62, 'Zr': 63, 'Es': 64, 'Pa': 65, 'Ac': 66, 'Mo': 67, 'U': 68, 'W': 69, 'As': 70, 'Rb': 71, 'Hf': 72, 'Cf': 73, 'Pt': 74, 'Ra': 75, 'Bk': 76, 'Rh': 77, 'Ru': 78, 'Au': 79, 'Te': 80, 'No': 81, 'Fm': 82, 'Si': 83}
+encodings = load('./data/one-hot.joblib')
 
 def process(chunk):
     chunk_to_save = []
@@ -31,7 +32,7 @@ def process(chunk):
         edge_matrix_idx2 = []
 
         for atom in mol.GetAtoms():
-            X.append([encodings[atom.GetSymbol()], int(atom.GetHybridization()), atom.GetFormalCharge()])
+            X.append([*encodings[atom.GetSymbol()], int(atom.GetHybridization()), atom.GetFormalCharge()])
 
         for bond in mol.GetBonds():
             features_for_edge = [bond.GetBondType().real, float(bond.GetIsAromatic())]
