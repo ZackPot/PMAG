@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51a31a34-2d49-48c5-96fd-deab4158ecc7" name="Changes" comment="ADD: Continued multiprocessing graph parsing loop">
-      <change afterPath="$PROJECT_DIR$/data/test_input.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/train_input.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/sample.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers.py" afterDir="false" />
     </list>
@@ -30,12 +27,12 @@
     &quot;assignee&quot;: &quot;ZackPot&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ZackPot/PMAG.git&quot;,
-    &quot;accountId&quot;: &quot;89c0da2f-41a2-40a1-912d-3ab16c690077&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ZackPot/PMAG",
+    "accountId": "89c0da2f-41a2-40a1-912d-3ab16c690077"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5,
   &quot;fromUser&quot;: false
@@ -56,10 +53,10 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/zacharypotishko/Desktop/PMAG (Protein Metal Affinity GCN)/data",
+    "last_opened_file_path": "/Users/zacharypotishko/Desktop/PMAG (Protein Metal Affinity GINE)",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">

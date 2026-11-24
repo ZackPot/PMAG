@@ -7,8 +7,10 @@ from rdkit import Chem
 from joblib import load
 
 chunk_size = 200
+Chem.SetDefaultPickleProperties(Chem.PropertyPickleOptions.AllProps)
 
 def get_chunks(file_path, chunk_size):
+    index = 0
     chunk = []
     supplier = Chem.SmilesMolSupplier(file_path, delimiter=',', smilesColumn=0, nameColumn=-1, titleLine=True)
 
@@ -17,14 +19,17 @@ def get_chunks(file_path, chunk_size):
         chunk.append(mol)
 
         if len(chunk) == chunk_size:
-            yield chunk
+            yield (chunk, index)
             chunk = []
+            index += 1
+
+        if chunk: yield (chunk, index)
 
 encodings = load('./data/one-hot.joblib')
 
 def process(chunk):
     chunk_to_save = []
-    for mol in chunk:
+    for mol in chunk[0]:
         X = []
         edge_features = []
 
@@ -48,15 +53,12 @@ def process(chunk):
         edge_matrix = torch.from_numpy(np.array([edge_matrix_idx1, edge_matrix_idx2]))
         X = torch.from_numpy(np.array(X))
         edge_features = torch.from_numpy(np.array(edge_features))
-        graph = Data(x=X, edge_index=edge_matrix, edge_attr=edge_features)
+
+        graph = Data(x=X, edge_index=edge_matrix, edge_attr=edge_features, y=torch.tensor(float(mol.GetProp('Experimental LgK1'))))
 
         chunk_to_save.append(graph)
         if len(chunk_to_save) == chunk_size:
-            if len(os.listdir('data/graph_chunks')) > 0:
-                next_to_save = max([int(filename[:4]) + 1 for filename in os.listdir('data/graph_chunks')])
-            else:
-                next_to_save = 1
-            torch.save(chunk_to_save, f'./data/graph_chunks/{next_to_save:04d}.pt')
+            torch.save(chunk_to_save, f'./data/graph_chunks/{chunk[1]:04d}.pt')
 
 if __name__ == '__main__':
     mols_path = 'data/train_input.csv'
