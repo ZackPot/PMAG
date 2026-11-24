@@ -23,7 +23,7 @@ def get_chunks(file_path, chunk_size):
             chunk = []
             index += 1
 
-        if chunk: yield (chunk, index)
+    if chunk: yield chunk, index
 
 encodings = load('./data/one-hot.joblib')
 
@@ -57,8 +57,9 @@ def process(chunk):
         graph = Data(x=X, edge_index=edge_matrix, edge_attr=edge_features, y=torch.tensor(float(mol.GetProp('Experimental LgK1'))))
 
         chunk_to_save.append(graph)
-        if len(chunk_to_save) == chunk_size:
-            torch.save(chunk_to_save, f'./data/graph_chunks/{chunk[1]:04d}.pt')
+
+    if len(chunk_to_save) == chunk_size:
+        torch.save(chunk_to_save, f'./data/graph_chunks/{chunk[1]:04d}.pt')
 
 if __name__ == '__main__':
     mols_path = 'data/train_input.csv'
