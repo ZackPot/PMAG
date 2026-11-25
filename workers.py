@@ -29,6 +29,16 @@ encodings = load('./data/one-hot.joblib')
 
 def process(chunk):
     chunk_to_save = []
+    lgk1_list = []
+
+    for mol in chunk[0]:
+        lgk1 = float(mol.GetProp('Experimental LgK1'))
+        lgk1_list.append(lgk1)
+
+    lgk1_list = np.array(lgk1_list)
+    lgk1_mean = np.mean(lgk1_list)
+    lgk1_std = np.std(lgk1_list)
+
     for mol in chunk[0]:
         X = []
         edge_features = []
@@ -54,7 +64,10 @@ def process(chunk):
         X = torch.from_numpy(np.array(X))
         edge_features = torch.from_numpy(np.array(edge_features))
 
-        graph = Data(x=X, edge_index=edge_matrix, edge_attr=edge_features, y=torch.tensor(float(mol.GetProp('Experimental LgK1'))))
+        lgk1 = torch.tensor(float(mol.GetProp('Experimental LgK1')))
+        norm_lgk1 = (lgk1 - lgk1_mean) / lgk1_std
+
+        graph = Data(x=X, edge_index=edge_matrix, edge_attr=edge_features, y=norm_lgk1)
 
         chunk_to_save.append(graph)
 

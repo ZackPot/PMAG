@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51a31a34-2d49-48c5-96fd-deab4158ecc7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/models/epoch=49-val_loss=8.14.ckpt" afterDir="false" />
+    <list default="true" id="51a31a34-2d49-48c5-96fd-deab4158ecc7" name="Changes" comment="ADD: Inserted further optimizations to the pytorch training script and saved the model checkpoint.">
+      <change afterPath="$PROJECT_DIR$/models/epoch=20-val_loss=0.34.ckpt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/epoch=49-val_loss=8.14.ckpt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sample.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/sample.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers.py" afterDir="false" />
     </list>
@@ -113,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1795546476801</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="ADD: Inserted further optimizations to the pytorch training script and saved the model checkpoint.">
+      <option name="closed" value="true" />
+      <created>1795557386495</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1795557386495</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +144,7 @@
     <MESSAGE value="ADD: Feature roadmap &amp; implemented getting a feature" />
     <MESSAGE value="ADD: Continued multiprocessing graph parsing loop" />
     <MESSAGE value="ADD: Continued pytorch model training with Lightning" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD: Continued pytorch model training with Lightning" />
+    <MESSAGE value="ADD: Inserted further optimizations to the pytorch training script and saved the model checkpoint." />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD: Inserted further optimizations to the pytorch training script and saved the model checkpoint." />
   </component>
 </project>
